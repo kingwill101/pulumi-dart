@@ -14,6 +14,7 @@ import (
 	"time"
 
 	semver "github.com/blang/semver"
+	codegen "github.com/kingwill101/pulumi-dart/pulumi-language-dart/codegen"
 	"github.com/pulumi/pulumi/pkg/v3/codegen/schema"
 	"github.com/pulumi/pulumi/sdk/v3/go/common/encoding"
 	"github.com/pulumi/pulumi/sdk/v3/go/common/resource/plugin"
@@ -35,7 +36,7 @@ func (host *dartLanguageHost) GenerateProgram(
 	}
 
 	source := map[string][]byte{
-		"main.dart": generatedProgramStub(req.GetSource()),
+		"main.dart": codegen.GeneratedProgramStub(req.GetSource()),
 	}
 
 	return &pulumirpc.GenerateProgramResponse{
@@ -58,7 +59,7 @@ func (host *dartLanguageHost) GenerateProject(
 		return nil, fmt.Errorf("failed to create target directory: %w", err)
 	}
 
-	projectName := sanitizeDartIdentifier(filepath.Base(req.GetTargetDirectory()))
+	projectName := codegen.SanitizeDartIdentifier(filepath.Base(req.GetTargetDirectory()))
 	project := workspace.Project{
 		Name: tokens.PackageName(projectName),
 	}
@@ -70,7 +71,7 @@ func (host *dartLanguageHost) GenerateProject(
 	}
 
 	if name := strings.TrimSpace(project.Name.String()); name != "" {
-		projectName = sanitizeDartIdentifier(name)
+		projectName = codegen.SanitizeDartIdentifier(name)
 	} else {
 		project.Name = tokens.PackageName(projectName)
 	}
@@ -88,7 +89,7 @@ func (host *dartLanguageHost) GenerateProject(
 		return nil, fmt.Errorf("failed to write Pulumi.yaml: %w", err)
 	}
 
-	pubspec := buildGeneratedPubspec(projectName, req.GetLocalDependencies(), nil)
+	pubspec := codegen.BuildGeneratedPubspec(projectName, req.GetLocalDependencies(), nil)
 	pubspecBytes, err := yaml.Marshal(pubspec)
 	if err != nil {
 		return nil, fmt.Errorf("failed to marshal generated pubspec.yaml: %w", err)
@@ -102,7 +103,7 @@ func (host *dartLanguageHost) GenerateProject(
 		return nil, fmt.Errorf("failed to create generated bin directory: %w", err)
 	}
 	programFile := filepath.Join(binDir, projectName+".dart")
-	if err := os.WriteFile(programFile, generatedProgramStub(nil), 0o600); err != nil {
+	if err := os.WriteFile(programFile, codegen.GeneratedProgramStub(nil), 0o600); err != nil {
 		return nil, fmt.Errorf("failed to write generated program file: %w", err)
 	}
 
@@ -124,10 +125,10 @@ func (host *dartLanguageHost) GeneratePackage(
 	}
 
 	var (
-		spec           *packageSchema
+		spec           *codegen.PackageSchema
 		rpcDiagnostics []*codegenrpc.Diagnostic
 	)
-	normalizedSchema := normalizeDeprecatedProviderReferences(req.GetSchema())
+	normalizedSchema := codegen.NormalizeDeprecatedProviderReferences(req.GetSchema())
 	generatedOutputPaths := map[string]struct{}{}
 	recordGeneratedOutput := func(path string) {
 		generatedOutputPaths[filepath.Clean(path)] = struct{}{}
@@ -161,7 +162,7 @@ func (host *dartLanguageHost) GeneratePackage(
 			// available and the schema includes external refs. BindSpec does not
 			// preserve enough shape information for cross-package typed refs.
 			if loader == nil && schemaContainsExternalReferences(normalizedSchema) {
-				spec, err = parsePackageSchema(normalizedSchema, req.GetDirectory())
+				spec, err = codegen.ParsePackageSchema(normalizedSchema, req.GetDirectory())
 				if err != nil {
 					return nil, err
 				}
@@ -169,7 +170,7 @@ func (host *dartLanguageHost) GeneratePackage(
 			} else if diags.HasErrors() {
 				// Preserve previous parse-only behavior when no loader target is provided.
 				if loader == nil {
-					spec, err = parsePackageSchema(normalizedSchema, req.GetDirectory())
+					spec, err = codegen.ParsePackageSchema(normalizedSchema, req.GetDirectory())
 					if err != nil {
 						return nil, err
 					}
@@ -180,12 +181,12 @@ func (host *dartLanguageHost) GeneratePackage(
 					}, nil
 				}
 			} else {
-				spec = packageSchemaFromPackage(pkg)
+				spec = codegen.PackageSchemaFromPackage(pkg)
 			}
 		} else if loader == nil {
 			// Parse-only fallback is intentionally permissive when we do not have
 			// a schema loader and cannot resolve external references.
-			spec, err = parsePackageSchema(normalizedSchema, req.GetDirectory())
+			spec, err = codegen.ParsePackageSchema(normalizedSchema, req.GetDirectory())
 			if err != nil {
 				return nil, err
 			}
@@ -195,16 +196,16 @@ func (host *dartLanguageHost) GeneratePackage(
 	}
 	if spec == nil {
 		var err error
-		spec, err = parsePackageSchema(normalizedSchema, req.GetDirectory())
+		spec, err = codegen.ParsePackageSchema(normalizedSchema, req.GetDirectory())
 		if err != nil {
 			return nil, err
 		}
 	}
 
 	if spec.Config != nil {
-		var rawSpec rawPackageSchema
+		var rawSpec codegen.RawPackageSchema
 		if err := json.Unmarshal([]byte(normalizedSchema), &rawSpec); err == nil {
-			requiredSet := rawRequiredSet(rawSpec.Config.Required)
+			requiredSet := codegen.RawRequiredSet(rawSpec.Config.Required)
 			for i := range spec.Config.Properties {
 				if _, ok := requiredSet[spec.Config.Properties[i].Name]; ok {
 					spec.Config.Properties[i].Required = true
@@ -213,29 +214,29 @@ func (host *dartLanguageHost) GeneratePackage(
 		}
 	}
 
-	packageName := toDartPackageName(spec.Namespace, spec.Name)
+	packageName := codegen.ToDartPackageName(spec.Namespace, spec.Name)
 	localDependencies := map[string]string{}
 	for name, path := range req.GetLocalDependencies() {
 		localDependencies[name] = path
 	}
 	if strings.TrimSpace(localDependencies["pulumi"]) == "" {
-		if inferredPulumiPath := inferLocalPulumiDependencyFromProject(req.GetDirectory()); inferredPulumiPath != "" {
+		if inferredPulumiPath := codegen.InferLocalPulumiDependencyFromProject(req.GetDirectory()); inferredPulumiPath != "" {
 			localDependencies["pulumi"] = inferredPulumiPath
 		}
 	}
 
 	requiredDependencies := requiredDartDependencies(packageSpec, normalizedSchema, spec.Name, req.GetDirectory())
-	pubspec := buildGeneratedPubspec(packageName, localDependencies, requiredDependencies)
+	pubspec := codegen.BuildGeneratedPubspec(packageName, localDependencies, requiredDependencies)
 	if shouldUseWorkspaceResolution(req.GetDirectory()) {
 		pubspec.Resolution = "workspace"
 		applyWorkspacePulumiDependencyVersion(&pubspec, req.GetDirectory())
 	}
 	applyLocalPathPublishPolicy(&pubspec)
-	applyPackageMetadataToPubspec(&pubspec, spec)
+	codegen.ApplyPackageMetadataToPubspec(&pubspec, spec)
 	if strings.TrimSpace(pubspec.Description) == "" {
 		pubspec.Description = fmt.Sprintf("A Pulumi SDK package for %s.", spec.Name)
 	}
-	pubspec.Version = generatedSDKPackageVersion(spec.Version)
+	pubspec.Version = codegen.GeneratedSDKPackageVersion(spec.Version)
 	if err := validateGeneratedPubspecDependencies(pubspec, req.GetDirectory()); err != nil {
 		return nil, err
 	}
@@ -252,7 +253,7 @@ func (host *dartLanguageHost) GeneratePackage(
 	if _, err := os.Stat(pubspecPath); err == nil {
 		// Preserve user-managed package metadata when a pubspec already exists,
 		// but enforce required generator/runtime dependencies.
-		existingPubspec, err := ReadAndParsePubspec(pubspecPath)
+		existingPubspec, err := codegen.ReadAndParsePubspec(pubspecPath)
 		if err != nil {
 			return nil, fmt.Errorf("failed to parse existing pubspec.yaml: %w", err)
 		}
@@ -307,14 +308,14 @@ func (host *dartLanguageHost) GeneratePackage(
 	}
 	sdkLibraryName := packageName + "_sdk"
 
-	sdkSources, moduleSymbols := generatedPackageSources(spec, packageName, sdkLibraryName)
+	sdkSources, moduleSymbols := codegen.GeneratedPackageSources(spec, packageName, sdkLibraryName)
 	sdkPaths := make([]string, 0, len(sdkSources))
 	for relativePath := range sdkSources {
 		sdkPaths = append(sdkPaths, relativePath)
 	}
 	sort.Strings(sdkPaths)
 	for _, relativePath := range sdkPaths {
-		outputPath, err := safeOutputPath(sdkDir, filepath.FromSlash(relativePath))
+		outputPath, err := codegen.SafeOutputPath(sdkDir, filepath.FromSlash(relativePath))
 		if err != nil {
 			return nil, fmt.Errorf("invalid generated SDK source path %q: %w", relativePath, err)
 		}
@@ -327,14 +328,14 @@ func (host *dartLanguageHost) GeneratePackage(
 		recordGeneratedOutput(outputPath)
 	}
 
-	publicModuleSources := generatedPublicModuleEntryPoints(packageName, sdkSources)
+	publicModuleSources := codegen.GeneratedPublicModuleEntryPoints(packageName, sdkSources)
 	publicModulePaths := make([]string, 0, len(publicModuleSources))
 	for relativePath := range publicModuleSources {
 		publicModulePaths = append(publicModulePaths, relativePath)
 	}
 	sort.Strings(publicModulePaths)
 	for _, relativePath := range publicModulePaths {
-		outputPath, err := safeOutputPath(libDir, filepath.FromSlash(relativePath))
+		outputPath, err := codegen.SafeOutputPath(libDir, filepath.FromSlash(relativePath))
 		if err != nil {
 			return nil, fmt.Errorf("invalid generated module entrypoint path %q: %w", relativePath, err)
 		}
@@ -348,7 +349,7 @@ func (host *dartLanguageHost) GeneratePackage(
 	}
 
 	publicLibraryFile := filepath.Join(libDir, packageName+".dart")
-	publicLibraryContent := generatedPackageRootLibrary(packageName, spec, moduleSymbols)
+	publicLibraryContent := codegen.GeneratedPackageRootLibrary(packageName, spec, moduleSymbols)
 	if err := os.WriteFile(publicLibraryFile, publicLibraryContent, 0o600); err != nil {
 		return nil, fmt.Errorf("failed to write generated public library file: %w", err)
 	}
@@ -362,7 +363,7 @@ func (host *dartLanguageHost) GeneratePackage(
 		if _, hasExplicitFile := extraFiles[filename]; hasExplicitFile {
 			continue
 		}
-		outputPath, err := safeOutputPath(req.GetDirectory(), filename)
+		outputPath, err := codegen.SafeOutputPath(req.GetDirectory(), filename)
 		if err != nil {
 			return nil, fmt.Errorf("invalid default extra file path %q: %w", filename, err)
 		}
@@ -381,7 +382,7 @@ func (host *dartLanguageHost) GeneratePackage(
 	sort.Strings(extraFilenames)
 	for _, filename := range extraFilenames {
 		contents := extraFiles[filename]
-		outputPath, err := safeOutputPath(req.GetDirectory(), filename)
+		outputPath, err := codegen.SafeOutputPath(req.GetDirectory(), filename)
 		if err != nil {
 			return nil, fmt.Errorf("invalid extra file path %q: %w", filename, err)
 		}
@@ -405,7 +406,7 @@ func (host *dartLanguageHost) GeneratePackage(
 	}, nil
 }
 
-func applyLocalPathPublishPolicy(existing *PubSpec) bool {
+func applyLocalPathPublishPolicy(existing *codegen.PubSpec) bool {
 	if existing == nil {
 		return false
 	}
@@ -415,7 +416,7 @@ func applyLocalPathPublishPolicy(existing *PubSpec) bool {
 	}
 
 	pulumiDependency, hasPulumiDependency := existing.Dependencies["pulumi"]
-	if !hasPulumiDependency || !isSourceDependencySpec(pulumiDependency) {
+	if !hasPulumiDependency || !codegen.IsSourceDependencySpec(pulumiDependency) {
 		return false
 	}
 	if strings.TrimSpace(existing.PublishTo) != "" {
@@ -426,7 +427,7 @@ func applyLocalPathPublishPolicy(existing *PubSpec) bool {
 	return true
 }
 
-func applyGeneratedPulumiDependency(existing *PubSpec, generated *PubSpec) bool {
+func applyGeneratedPulumiDependency(existing *codegen.PubSpec, generated *codegen.PubSpec) bool {
 	if existing == nil || generated == nil {
 		return false
 	}
@@ -438,7 +439,7 @@ func applyGeneratedPulumiDependency(existing *PubSpec, generated *PubSpec) bool 
 	if !hasPulumiDependency {
 		return false
 	}
-	if !isSourceDependencySpec(pulumiDependency) {
+	if !codegen.IsSourceDependencySpec(pulumiDependency) {
 		return false
 	}
 
@@ -455,7 +456,7 @@ func applyGeneratedPulumiDependency(existing *PubSpec, generated *PubSpec) bool 
 	return true
 }
 
-func missingRequiredDependencies(existing *PubSpec, required map[string]interface{}) []string {
+func missingRequiredDependencies(existing *codegen.PubSpec, required map[string]interface{}) []string {
 	if existing == nil || len(required) == 0 {
 		return nil
 	}
@@ -499,6 +500,8 @@ func dartLanguageDependencies(packageSpec schema.PackageSpec) map[string]interfa
 	return dartInfo.Dependencies
 }
 
+// requiredDartDependencies merges inferred, registry, nodejs-language and
+// explicit dart-language dependencies into one dependency map for pubspec.
 func requiredDartDependencies(
 	packageSpec schema.PackageSpec,
 	rawSchema string,
@@ -531,6 +534,12 @@ func requiredDartDependencies(
 	return combined
 }
 
+// nodejsLanguagePulumiDependencies extracts cross-provider Pulumi dependencies
+// from nodejs language metadata and maps them to Dart package names.
+//
+// Example:
+//
+//	"@pulumi/aws": "^6.0.0" -> "pulumi_aws": "^6.0.0"
 func nodejsLanguagePulumiDependencies(
 	packageSpec schema.PackageSpec,
 	providerName string,
@@ -567,7 +576,7 @@ func nodejsLanguagePulumiDependencies(
 			continue
 		}
 
-		dartPackage := toDartPackageName("", referencedProvider)
+		dartPackage := codegen.ToDartPackageName("", referencedProvider)
 		if strings.TrimSpace(dartPackage) == "" {
 			continue
 		}
@@ -594,6 +603,8 @@ func nodejsLanguagePulumiDependencies(
 // and use that discovered provider version in pubspec constraints.
 var externalSchemaRefRegex = regexp.MustCompile(`/([a-z0-9][a-z0-9-]*)/v([0-9][^/"]*)/schema\.json#`)
 
+// schemaContainsExternalReferences reports whether schema JSON contains refs to
+// other providers' versioned schema documents.
 func schemaContainsExternalReferences(rawSchema string) bool {
 	if strings.TrimSpace(rawSchema) == "" {
 		return false
@@ -601,6 +612,12 @@ func schemaContainsExternalReferences(rawSchema string) bool {
 	return externalSchemaRefRegex.MatchString(strings.ToLower(rawSchema))
 }
 
+// inferredDartDependenciesFromExternalRefs discovers provider dependencies from
+// external schema `$ref` values and emits pubspec constraints.
+//
+// Example:
+//
+//	/aws/v7.20.0/schema.json#... -> pulumi_aws: ^7.20.0
 func inferredDartDependenciesFromExternalRefs(rawSchema, providerName string) map[string]interface{} {
 	rawSchema = strings.TrimSpace(rawSchema)
 	if rawSchema == "" {
@@ -624,7 +641,7 @@ func inferredDartDependenciesFromExternalRefs(rawSchema, providerName string) ma
 			continue
 		}
 
-		dependencyName := toDartPackageName("", referencedProvider)
+		dependencyName := codegen.ToDartPackageName("", referencedProvider)
 		if dependencyName == "" {
 			continue
 		}
@@ -651,6 +668,8 @@ func inferredDartDependenciesFromExternalRefs(rawSchema, providerName string) ma
 	return dependencies
 }
 
+// compareDiscoveredProviderVersions compares two discovered version strings and
+// returns 1 when left is newer, -1 when right is newer, and 0 when equal.
 func compareDiscoveredProviderVersions(left, right string) int {
 	left = strings.TrimSpace(strings.TrimPrefix(strings.TrimPrefix(left, "v"), "V"))
 	right = strings.TrimSpace(strings.TrimPrefix(strings.TrimPrefix(right, "v"), "V"))
@@ -687,6 +706,12 @@ func compareDiscoveredProviderVersions(left, right string) int {
 	return 0
 }
 
+// canonicalProviderName normalizes provider identifiers for matching and
+// dependency resolution.
+//
+// Example:
+//
+//	"Azure_Native" -> "azure-native"
 func canonicalProviderName(name string) string {
 	name = strings.TrimSpace(strings.ToLower(name))
 	if name == "" {
@@ -695,6 +720,8 @@ func canonicalProviderName(name string) string {
 	return strings.ReplaceAll(name, "_", "-")
 }
 
+// localRegistryDartDependencies loads dependency overrides from
+// sdk_dependency_registry.yaml for the target provider.
 func localRegistryDartDependencies(providerName, outputDir string) map[string]interface{} {
 	registryBytes, registryBaseDir, ok := loadDependencyRegistryContent(outputDir)
 	if !ok {
@@ -736,7 +763,7 @@ func localRegistryDartDependencies(providerName, outputDir string) map[string]in
 	}
 
 	normalized := map[string]interface{}{}
-	currentPackageName := toDartPackageName("", providerName)
+	currentPackageName := codegen.ToDartPackageName("", providerName)
 	for dependencyName, spec := range providerEntry.Dependencies {
 		name := strings.TrimSpace(dependencyName)
 		if name == "" {
@@ -918,6 +945,8 @@ func loadDependencyRegistryContent(outputDir string) ([]byte, string, bool) {
 	return nil, "", false
 }
 
+// resolveDependencyRegistryPath resolves the dependency registry from explicit
+// env override or nearest repo-root packages directory.
 func resolveDependencyRegistryPath(outputDir string) string {
 	if path := strings.TrimSpace(os.Getenv("PULUMI_DART_DEPENDENCY_REGISTRY")); path != "" {
 		if !filepath.IsAbs(path) {
@@ -963,10 +992,13 @@ func resolveDependencyRegistryPath(outputDir string) string {
 	return ""
 }
 
+// resolveDependencyRegistryURL returns optional HTTP(S) registry URL override.
 func resolveDependencyRegistryURL() string {
 	return strings.TrimSpace(os.Getenv("PULUMI_DART_DEPENDENCY_REGISTRY_URL"))
 }
 
+// fetchDependencyRegistryURL retrieves registry bytes from URL with short
+// timeout and basic status/body validation.
 func fetchDependencyRegistryURL(registryURL string) ([]byte, bool) {
 	client := &http.Client{Timeout: 5 * time.Second}
 	response, err := client.Get(registryURL)
@@ -989,6 +1021,8 @@ func fetchDependencyRegistryURL(registryURL string) ([]byte, bool) {
 	return bytes, true
 }
 
+// shouldUpdateExistingPubspec returns true when existing pubspec files may be
+// augmented with missing required generated dependencies.
 func shouldUpdateExistingPubspec() bool {
 	value := strings.TrimSpace(os.Getenv("PULUMI_DART_UPDATE_EXISTING_PUBSPEC"))
 	return strings.EqualFold(value, "1") ||
@@ -996,6 +1030,8 @@ func shouldUpdateExistingPubspec() bool {
 		strings.EqualFold(value, "yes")
 }
 
+// shouldUseWorkspaceResolution decides whether generated pubspec should include
+// `resolution: workspace`.
 func shouldUseWorkspaceResolution(outputDir string) bool {
 	if value, ok := parseTruthyFalseyEnv("PULUMI_DART_WORKSPACE_RESOLUTION"); ok {
 		return value
@@ -1003,6 +1039,8 @@ func shouldUseWorkspaceResolution(outputDir string) bool {
 	return directoryInPubWorkspace(outputDir)
 }
 
+// parseTruthyFalseyEnv parses common boolean env encodings and reports whether
+// the value was explicitly set.
 func parseTruthyFalseyEnv(name string) (bool, bool) {
 	value := strings.TrimSpace(os.Getenv(name))
 	if value == "" {
@@ -1021,6 +1059,8 @@ func parseTruthyFalseyEnv(name string) (bool, bool) {
 	return false, false
 }
 
+// directoryInPubWorkspace reports whether outputDir is under any member of the
+// nearest pub workspace root.
 func directoryInPubWorkspace(outputDir string) bool {
 	workspaceRoot := findNearestPubWorkspaceRoot(outputDir)
 	if workspaceRoot == "" {
@@ -1035,7 +1075,9 @@ func directoryInPubWorkspace(outputDir string) bool {
 	return outputDirWithinWorkspaceMembers(workspaceRoot, absOutputDir)
 }
 
-func applyWorkspacePulumiDependencyVersion(pubspec *PubSpec, outputDir string) bool {
+// applyWorkspacePulumiDependencyVersion pins the generated pulumi dependency to
+// the workspace pulumi package version when discoverable.
+func applyWorkspacePulumiDependencyVersion(pubspec *codegen.PubSpec, outputDir string) bool {
 	if pubspec == nil {
 		return false
 	}
@@ -1064,6 +1106,8 @@ func applyWorkspacePulumiDependencyVersion(pubspec *PubSpec, outputDir string) b
 	return true
 }
 
+// inferWorkspacePulumiPackageVersion scans workspace members for the local
+// pulumi package and returns its version.
 func inferWorkspacePulumiPackageVersion(outputDir string) string {
 	workspaceRoot := findNearestPubWorkspaceRoot(outputDir)
 	if workspaceRoot == "" {
@@ -1081,7 +1125,7 @@ func inferWorkspacePulumiPackageVersion(outputDir string) string {
 			continue
 		}
 		memberDir := filepath.Clean(filepath.Join(workspaceRoot, memberPath))
-		memberPubspec, err := ReadAndParsePubspec(filepath.Join(memberDir, "pubspec.yaml"))
+		memberPubspec, err := codegen.ReadAndParsePubspec(filepath.Join(memberDir, "pubspec.yaml"))
 		if err != nil || memberPubspec == nil {
 			continue
 		}
@@ -1093,15 +1137,19 @@ func inferWorkspacePulumiPackageVersion(outputDir string) string {
 	return ""
 }
 
+// defaultGeneratedExtraFiles returns default scaffold files emitted for a new
+// generated provider package.
 func defaultGeneratedExtraFiles(packageName, packagePath, packageVersion string) map[string][]byte {
 	return map[string][]byte{
-		"README.md":             generatedPackageReadme(packageName, packagePath),
-		"CHANGELOG.md":          generatedPackageChangelog(packageVersion),
-		"analysis_options.yaml": generatedPackageAnalysisOptions(),
-		"example/main.dart":     generatedPackageExampleMain(packageName),
+		"README.md":             codegen.GeneratedPackageReadme(packageName, packagePath),
+		"CHANGELOG.md":          codegen.GeneratedPackageChangelog(packageVersion),
+		"analysis_options.yaml": codegen.GeneratedPackageAnalysisOptions(),
+		"example/main.dart":     codegen.GeneratedPackageExampleMain(packageName),
 	}
 }
 
+// findNearestPubWorkspaceRoot walks up from outputDir to find a pubspec that
+// declares a workspace section.
 func findNearestPubWorkspaceRoot(outputDir string) string {
 	if strings.TrimSpace(outputDir) == "" {
 		return ""
@@ -1125,6 +1173,8 @@ func findNearestPubWorkspaceRoot(outputDir string) string {
 	}
 }
 
+// outputDirWithinWorkspaceMembers reports whether absOutputDir is equal to or
+// nested under any declared workspace member.
 func outputDirWithinWorkspaceMembers(workspaceRoot, absOutputDir string) bool {
 	workspaceMembers, err := workspaceMembersFromPubspec(filepath.Join(workspaceRoot, "pubspec.yaml"))
 	if err != nil {
@@ -1149,6 +1199,7 @@ func outputDirWithinWorkspaceMembers(workspaceRoot, absOutputDir string) bool {
 	return false
 }
 
+// workspaceMembersFromPubspec loads workspace members from pubspec.yaml.
 func workspaceMembersFromPubspec(pubspecPath string) ([]string, error) {
 	pubspecData, err := os.ReadFile(pubspecPath)
 	if err != nil {
@@ -1168,6 +1219,8 @@ func workspaceMembersFromPubspec(pubspecPath string) ([]string, error) {
 	return pubspec.Workspace, nil
 }
 
+// syncGeneratedCodeToWorkspaceMember mirrors generated lib sources into an
+// existing workspace package when package identity matches.
 func syncGeneratedCodeToWorkspaceMember(generatedDir, packageName string) error {
 	absGeneratedDir, err := filepath.Abs(generatedDir)
 	if err != nil {
@@ -1197,12 +1250,12 @@ func syncGeneratedCodeToWorkspaceMember(generatedDir, packageName string) error 
 		return nil
 	}
 
-	packagePubspec, err := ReadAndParsePubspec(pubspecPath)
+	packagePubspec, err := codegen.ReadAndParsePubspec(pubspecPath)
 	if err != nil {
 		return nil
 	}
 
-	expectedPackageName := toDartPackageName("", packageName)
+	expectedPackageName := codegen.ToDartPackageName("", packageName)
 	if packagePubspec.Name != expectedPackageName {
 		return nil
 	}
@@ -1213,7 +1266,7 @@ func syncGeneratedCodeToWorkspaceMember(generatedDir, packageName string) error 
 		return nil
 	}
 
-	generatedPubspec, err := ReadAndParsePubspec(generatedPubspecPath)
+	generatedPubspec, err := codegen.ReadAndParsePubspec(generatedPubspecPath)
 	if err != nil {
 		return nil
 	}
@@ -1261,6 +1314,7 @@ func syncGeneratedCodeToWorkspaceMember(generatedDir, packageName string) error 
 	return nil
 }
 
+// copyDirContents recursively copies directory contents from src to dst.
 func copyDirContents(src, dst string) error {
 	entries, err := os.ReadDir(src)
 	if err != nil {

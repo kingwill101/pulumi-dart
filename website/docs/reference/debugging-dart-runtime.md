@@ -79,8 +79,8 @@ Both are short and stable.
 
 Example workspace files for `examples/aws/hello-fargate`:
 
-- [launch.json](/run/media/kingwill101/disk2/code/code/dart_packages/pulumi-dart/examples/aws/hello-fargate/.vscode/launch.json)
-- [tasks.json](/run/media/kingwill101/disk2/code/code/dart_packages/pulumi-dart/examples/aws/hello-fargate/.vscode/tasks.json)
+- `examples/aws/hello-fargate/.vscode/launch.json`
+- `examples/aws/hello-fargate/.vscode/tasks.json`
 
 Launch config:
 
@@ -129,4 +129,3 @@ When CLI prints `vm service: 127.0.0.1:44651`, use:
 
 - [Runtime execution and entrypoint resolution](./runtime-execution.md)
 - [Troubleshooting](../get-started/troubleshooting.md)
-

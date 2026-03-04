@@ -9,10 +9,17 @@ import (
 	"path/filepath"
 	"strings"
 	"time"
+
+	codegen "github.com/kingwill101/pulumi-dart/pulumi-language-dart/codegen"
 )
 
 const defaultPubDevAPIBaseURL = "https://pub.dev/api/packages"
 
+// isTruthyEnv interprets common truthy strings used in environment variables.
+//
+// Example:
+//
+//	"1", "true", "yes", and "on" return true.
 func isTruthyEnv(value string) bool {
 	switch strings.ToLower(strings.TrimSpace(value)) {
 	case "1", "true", "yes", "on":
@@ -22,14 +29,29 @@ func isTruthyEnv(value string) bool {
 	}
 }
 
+// shouldValidateDependencyPaths reports whether generated pubspec dependency
+// path existence checks are enabled.
+//
+// It is controlled by PULUMI_DART_VALIDATE_DEPENDENCY_PATHS.
 func shouldValidateDependencyPaths() bool {
 	return isTruthyEnv(os.Getenv("PULUMI_DART_VALIDATE_DEPENDENCY_PATHS"))
 }
 
+// shouldValidatePubDevDependencies reports whether generated pubspec
+// dependencies should be validated against pub.dev.
+//
+// It is controlled by PULUMI_DART_VALIDATE_PUBDEV.
 func shouldValidatePubDevDependencies() bool {
 	return isTruthyEnv(os.Getenv("PULUMI_DART_VALIDATE_PUBDEV"))
 }
 
+// dependencyPath extracts a path dependency from a pubspec dependency value.
+//
+// Supported shapes:
+// - map[string]string{"path": "..."}
+// - map[string]interface{}{"path": "..."}
+//
+// It returns the normalized path and true when a non-empty path exists.
 func dependencyPath(spec interface{}) (string, bool) {
 	switch typed := spec.(type) {
 	case map[string]string:
@@ -47,6 +69,14 @@ func dependencyPath(spec interface{}) (string, bool) {
 	}
 }
 
+// shouldValidateDependencyOnPubDev returns true when a dependency spec should
+// be checked using the pub.dev package API.
+//
+// Source dependencies (path/git/sdk/hosted maps) are intentionally excluded.
+//
+// Example:
+// - "^1.2.3" => true
+// - map{"path":"../foo"} => false
 func shouldValidateDependencyOnPubDev(spec interface{}) bool {
 	switch typed := spec.(type) {
 	case string:
@@ -94,6 +124,10 @@ func shouldValidateDependencyOnPubDev(spec interface{}) bool {
 	return false
 }
 
+// pubDevPackageExists queries pub.dev for a package name and reports whether it
+// exists.
+//
+// The base API URL can be overridden with PULUMI_DART_PUBDEV_API_BASE_URL.
 func pubDevPackageExists(name string) (bool, error) {
 	name = strings.TrimSpace(name)
 	if name == "" {
@@ -124,7 +158,14 @@ func pubDevPackageExists(name string) (bool, error) {
 	}
 }
 
-func validateGeneratedPubspecDependencies(pubspec PubSpec, packageDir string) error {
+// validateGeneratedPubspecDependencies performs generated pubspec sanity checks
+// and optional dependency validation against local paths and pub.dev.
+//
+// Validations:
+// - no self-dependency on the generated package name
+// - local path dependencies exist (optional)
+// - non-source dependencies exist on pub.dev (optional)
+func validateGeneratedPubspecDependencies(pubspec codegen.PubSpec, packageDir string) error {
 	packageName := strings.TrimSpace(pubspec.Name)
 	if packageName == "" {
 		return nil

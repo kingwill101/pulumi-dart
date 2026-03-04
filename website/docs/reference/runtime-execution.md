@@ -36,6 +36,8 @@ sidebar_position: 2
   - plugin server override
   - parameterization metadata
 - Pulumi uses returned plugin metadata to resolve/install provider plugins.
+- Default plugin cache location is `~/.pulumi/plugins` (or `$PULUMI_HOME/plugins` when `PULUMI_HOME` is set).
+- Use `pulumi plugin ls` to inspect installed provider plugins.
 
 ## Program execution selection
 

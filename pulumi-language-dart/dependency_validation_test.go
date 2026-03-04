@@ -7,12 +7,13 @@ import (
 	"path/filepath"
 	"testing"
 
+	codegen "github.com/kingwill101/pulumi-dart/pulumi-language-dart/codegen"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 )
 
 func TestValidateGeneratedPubspecDependenciesRejectsSelfDependency(t *testing.T) {
-	err := validateGeneratedPubspecDependencies(PubSpec{
+	err := validateGeneratedPubspecDependencies(codegen.PubSpec{
 		Name: "pulumi_sample",
 		Dependencies: map[string]interface{}{
 			"pulumi_sample": "^1.0.0",
@@ -25,7 +26,7 @@ func TestValidateGeneratedPubspecDependenciesRejectsSelfDependency(t *testing.T)
 func TestValidateGeneratedPubspecDependenciesPathValidationDisabled(t *testing.T) {
 	t.Setenv("PULUMI_DART_VALIDATE_DEPENDENCY_PATHS", "")
 
-	err := validateGeneratedPubspecDependencies(PubSpec{
+	err := validateGeneratedPubspecDependencies(codegen.PubSpec{
 		Name: "pulumi_sample",
 		Dependencies: map[string]interface{}{
 			"pulumi_local": map[string]string{"path": "./missing"},
@@ -37,7 +38,7 @@ func TestValidateGeneratedPubspecDependenciesPathValidationDisabled(t *testing.T
 func TestValidateGeneratedPubspecDependenciesPathValidationEnabled(t *testing.T) {
 	t.Setenv("PULUMI_DART_VALIDATE_DEPENDENCY_PATHS", "true")
 
-	err := validateGeneratedPubspecDependencies(PubSpec{
+	err := validateGeneratedPubspecDependencies(codegen.PubSpec{
 		Name: "pulumi_sample",
 		Dependencies: map[string]interface{}{
 			"pulumi_local": map[string]string{"path": "./missing"},
@@ -53,7 +54,7 @@ func TestValidateGeneratedPubspecDependenciesPathValidationEnabledPassesForExist
 	existingPath := filepath.Join(baseDir, "local-sdk")
 	require.NoError(t, os.MkdirAll(existingPath, 0o700))
 
-	err := validateGeneratedPubspecDependencies(PubSpec{
+	err := validateGeneratedPubspecDependencies(codegen.PubSpec{
 		Name: "pulumi_sample",
 		Dependencies: map[string]interface{}{
 			"pulumi_local": map[string]string{"path": "./local-sdk"},
@@ -76,7 +77,7 @@ func TestValidateGeneratedPubspecDependenciesPubDevValidationEnabled(t *testing.
 	t.Setenv("PULUMI_DART_VALIDATE_PUBDEV", "true")
 	t.Setenv("PULUMI_DART_PUBDEV_API_BASE_URL", server.URL+"/packages")
 
-	err := validateGeneratedPubspecDependencies(PubSpec{
+	err := validateGeneratedPubspecDependencies(codegen.PubSpec{
 		Name: "pulumi_sample",
 		Dependencies: map[string]interface{}{
 			"pulumi_ok":  "^1.0.0",

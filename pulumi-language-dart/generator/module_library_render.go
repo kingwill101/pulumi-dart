@@ -11,6 +11,8 @@ func moduleLibraryDirective(moduleFilePath string) string {
 	return ""
 }
 
+// AliasSpec describes a generated symbol alias emitted into a module library.
+// Only function aliases are currently emitted.
 type AliasSpec struct {
 	Kind          string
 	CanonicalName string
@@ -18,6 +20,13 @@ type AliasSpec struct {
 	ImportPath    string
 }
 
+// ModuleLibraryPathForSymbolFile returns the module entrypoint filename for a
+// generated symbol file path.
+//
+// Examples:
+//   - "ec2/instance.dart" -> "ec2.dart"
+//   - "index/widget.dart" -> "index.dart"
+//   - "widget.dart" -> "index.dart"
 func ModuleLibraryPathForSymbolFile(symbolFilePath string) string {
 	normalized := filepath.ToSlash(strings.TrimSpace(symbolFilePath))
 	if normalized == "" {
@@ -39,6 +48,16 @@ func ModuleLibraryPathForSymbolFile(symbolFilePath string) string {
 	return root + ".dart"
 }
 
+// GeneratedAliasedModuleLibraryFile renders a single module library file that:
+//   - re-exports existing symbol files from base content
+//   - imports any alias sources
+//   - emits function alias forwarders when required
+//
+// Example output snippet:
+//
+//	import 'src/foo.dart';
+//	export 'foo.dart';
+//	final getWidget = getWidgetInternal;
 func GeneratedAliasedModuleLibraryFile(moduleFilePath string, baseContent []byte, aliases []AliasSpec) []byte {
 	_ = moduleFilePath
 	exportPaths := ModuleExportPathsFromContent(baseContent)
@@ -105,6 +124,13 @@ func GeneratedAliasedModuleLibraryFile(moduleFilePath string, baseContent []byte
 	return []byte(b.String())
 }
 
+// GeneratedModuleLibraryFiles groups generated symbol files by root module and
+// emits one "<module>.dart" library file for each module.
+//
+// Example:
+//
+//	symbol files: "ec2/instance.dart", "ec2/vpc.dart"
+//	output file : "ec2.dart" exporting both symbols.
 func GeneratedModuleLibraryFiles(symbolFilePaths []string) map[string][]byte {
 	if len(symbolFilePaths) == 0 {
 		return map[string][]byte{}

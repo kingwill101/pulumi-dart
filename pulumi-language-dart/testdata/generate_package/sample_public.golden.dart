@@ -1,7 +1,5 @@
 // ignore_for_file: non_constant_identifier_names
 
-library pulumi_sample;
-
 import 'package:pulumi_sample/index.dart' as module_index;
 import 'package:pulumi_sample/providers.dart' as module_providers;
 

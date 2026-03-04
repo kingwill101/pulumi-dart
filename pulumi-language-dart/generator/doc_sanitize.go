@@ -13,6 +13,13 @@ var (
 	deprecatedProviderRefPattern   = regexp.MustCompile(`^/resources/pulumi:providers:[^/]+$`)
 )
 
+// SanitizeDartDocComment normalizes upstream provider docs for safe Dart
+// emission by removing unsupported wrappers and trailing chooser artifacts.
+//
+// Example transformations:
+//   - removes "<!-- Start PulumiCodeChooser -->" wrappers
+//   - strips HTML span tags while preserving text
+//   - trims trailing "## Example Usage" headings with no content
 func SanitizeDartDocComment(comment string) string {
 	// Normalize CRLF/CR from upstream docs to avoid embedding raw carriage
 	// returns that can break Dart parser/formatter behavior.
@@ -41,6 +48,12 @@ func SanitizeDartDocComment(comment string) string {
 	return strings.TrimSpace(strings.Join(trimmed, "\n"))
 }
 
+// NormalizeDeprecatedProviderReferences rewrites deprecated provider resource
+// refs ("/resources/pulumi:providers:<name>") to "#/provider".
+//
+// Example:
+//
+//	{"$ref":"/resources/pulumi:providers:aws"} -> {"$ref":"#/provider"}.
 func NormalizeDeprecatedProviderReferences(rawSchema string) string {
 	var decoded interface{}
 	if err := json.Unmarshal([]byte(rawSchema), &decoded); err != nil {

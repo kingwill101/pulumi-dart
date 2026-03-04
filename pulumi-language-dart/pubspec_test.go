@@ -5,10 +5,12 @@ import (
 	"slices"
 	"strings"
 	"testing"
+
+	codegen "github.com/kingwill101/pulumi-dart/pulumi-language-dart/codegen"
 )
 
 func TestReadAndParsePubspec(t *testing.T) {
-	pubspec, err := ReadAndParsePubspec("testdata/pubspec.yaml")
+	pubspec, err := codegen.ReadAndParsePubspec("testdata/pubspec.yaml")
 	if err != nil {
 		t.Fatalf("ReadAndParsePubspec failed: %v", err)
 	}
@@ -46,7 +48,7 @@ func TestDeterminePulumiPackages(t *testing.T) {
 		{"pulumi_azure", "git:https://github.com/pulumi/pulumi-azure.git#v4.0.0"},
 	}
 
-	result := DeterminePulumiPackages(input)
+	result := codegen.DeterminePulumiPackages(input)
 	slices.SortFunc(result, func(a, b []string) int {
 		return strings.Compare(a[0], b[0])
 	})
@@ -103,8 +105,8 @@ func TestGetDependencyVersion(t *testing.T) {
 
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			if got := getDependencyVersion(tt.dep); got != tt.want {
-				t.Errorf("getDependencyVersion() = %v, want %v", got, tt.want)
+			if got := codegen.DependencyVersion(tt.dep); got != tt.want {
+				t.Errorf("codegen.DependencyVersion() = %v, want %v", got, tt.want)
 			}
 		})
 	}

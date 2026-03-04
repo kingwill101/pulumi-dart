@@ -41,6 +41,7 @@ import (
 	"syscall"
 	"time"
 
+	codegen "github.com/kingwill101/pulumi-dart/pulumi-language-dart/codegen"
 	"github.com/kingwill101/pulumi-dart/pulumi-language-dart/version"
 	pbempty "google.golang.org/protobuf/types/known/emptypb"
 	"google.golang.org/protobuf/types/known/structpb"
@@ -222,6 +223,12 @@ func (host *dartLanguageHost) Handshake(
 	return &pulumirpc.LanguageHandshakeResponse{}, nil
 }
 
+// normalizePackageDependencyVersion converts pubspec-style constraints into a
+// plugin version hint accepted by Pulumi.
+//
+// Examples:
+//   - "^7.20.0" -> "v7.20.0"
+//   - "path:../aws" -> ""
 func normalizePackageDependencyVersion(version string) string {
 	version = strings.TrimSpace(version)
 	if version == "" {
@@ -243,6 +250,12 @@ func normalizePackageDependencyVersion(version string) string {
 	return "v" + version
 }
 
+// dependencyToPackageName maps Dart dependency names to Pulumi plugin package
+// names.
+//
+// Examples:
+//   - "pulumi_awsx" -> "awsx"
+//   - "pulumi_azure_native" -> "azure-native"
 func dependencyToPackageName(name string) string {
 	name = strings.TrimSpace(name)
 	if name == "" || name == "pulumi" {
@@ -255,6 +268,8 @@ func dependencyToPackageName(name string) string {
 	return strings.TrimSpace(name)
 }
 
+// resolveProgramDirectory returns ProgramInfo.ProgramDirectory when present,
+// otherwise the first non-empty fallback.
 func resolveProgramDirectory(info *pulumirpc.ProgramInfo, fallbacks ...string) string {
 	if info != nil && strings.TrimSpace(info.GetProgramDirectory()) != "" {
 		return strings.TrimSpace(info.GetProgramDirectory())
@@ -267,6 +282,12 @@ func resolveProgramDirectory(info *pulumirpc.ProgramInfo, fallbacks ...string) s
 	return ""
 }
 
+// shouldResolveToBinDartEntryPoint reports whether an entrypoint token should
+// be interpreted as a `bin/<name>.dart` candidate.
+//
+// Example:
+//
+//	"infra" => true, "./infra.dart" => false, "." => false.
 func shouldResolveToBinDartEntryPoint(entryPoint string) bool {
 	entryPoint = strings.TrimSpace(entryPoint)
 	if entryPoint == "" || entryPoint == "." {
@@ -281,6 +302,12 @@ func shouldResolveToBinDartEntryPoint(entryPoint string) bool {
 	return true
 }
 
+// resolveProgramEntryPoint computes the effective entrypoint using ProgramInfo
+// precedence and compatibility fallbacks.
+//
+// Examples:
+//   - entryPoint "infra" + existing bin/infra.dart => "bin/infra.dart"
+//   - fallback "." + existing bin/main.dart => "bin/main.dart"
 func resolveProgramEntryPoint(info *pulumirpc.ProgramInfo, fallback string, programDirectory string) string {
 	if info != nil && strings.TrimSpace(info.GetEntryPoint()) != "" && strings.TrimSpace(info.GetEntryPoint()) != "." {
 		entryPoint := strings.TrimSpace(info.GetEntryPoint())
@@ -318,8 +345,8 @@ func resolveProgramEntryPoint(info *pulumirpc.ProgramInfo, fallback string, prog
 				return filepath.ToSlash(filepath.Join("bin", "main.dart"))
 			}
 
-			if pubspecPath, err := findPubspecYaml(programDirectory); err == nil {
-				pubspec, err := ReadAndParsePubspec(pubspecPath)
+			if pubspecPath, err := codegen.FindPubspecYaml(programDirectory); err == nil {
+				pubspec, err := codegen.ReadAndParsePubspec(pubspecPath)
 				if err == nil && strings.TrimSpace(pubspec.Name) != "" {
 					candidate := filepath.Join("bin", strings.TrimSpace(pubspec.Name)+".dart")
 					if _, err := os.Stat(filepath.Join(programDirectory, candidate)); err == nil {
@@ -373,6 +400,13 @@ func normalizeProgramDirectoryAndEntryPoint(programDirectory, entryPoint, fallba
 	return programDirectory, entryPoint
 }
 
+// normalizeCompilationContext harmonizes program directory and entrypoint for
+// compile/cache operations.
+//
+// Example:
+//
+//	programDirectory "examples/app/bin", entryPoint "main.dart" may normalize
+//	to programDirectory "examples/app", entryPoint "bin/main.dart".
 func normalizeCompilationContext(programDirectory, entryPoint, fallbackRoot string) (string, string) {
 	programDirectory, entryPoint = normalizeProgramDirectoryAndEntryPoint(programDirectory, entryPoint, fallbackRoot)
 	if strings.TrimSpace(programDirectory) == "" || strings.TrimSpace(entryPoint) == "" || strings.TrimSpace(entryPoint) == "." {
@@ -398,6 +432,8 @@ func normalizeCompilationContext(programDirectory, entryPoint, fallbackRoot stri
 	return programDirectory, entryPoint
 }
 
+// parseDartRuntimeOptions reads `runtime.options` from ProgramInfo and validates
+// supported Dart runtime keys.
 func parseDartRuntimeOptions(info *pulumirpc.ProgramInfo) (dartRuntimeOptions, error) {
 	var options dartRuntimeOptions
 	if info == nil || info.GetOptions() == nil {
@@ -428,6 +464,12 @@ func parseDartRuntimeOptions(info *pulumirpc.ProgramInfo) (dartRuntimeOptions, e
 	return options, nil
 }
 
+// normalizeDartBuildTargetPath resolves relative build targets against the
+// program directory.
+//
+// Example:
+//
+//	("/repo/app", ".dart_tool/pulumi/app") => "/repo/app/.dart_tool/pulumi/app"
 func normalizeDartBuildTargetPath(programDirectory, buildTarget string) string {
 	buildTarget = strings.TrimSpace(buildTarget)
 	if buildTarget == "" {
@@ -529,6 +571,12 @@ func computeDartProgramFingerprint(programDirectory, entryPoint string) (string,
 	return hex.EncodeToString(hasher.Sum(nil))[:24], nil
 }
 
+// defaultDartBuildTarget returns the standard cache executable path for a
+// program fingerprint.
+//
+// Example output:
+//
+//	.dart_tool/pulumi/cache/exe/program-<fingerprint>[.exe]
 func defaultDartBuildTarget(programDirectory, entryPoint string) (string, error) {
 	if strings.TrimSpace(programDirectory) == "" {
 		return "", errors.New("program directory is required")
@@ -732,13 +780,13 @@ func (host *dartLanguageHost) GetRequiredPackages(
 		return nil, status.Error(codes.InvalidArgument, "program directory or root directory must be set in program info")
 	}
 
-	pubspecPath, err := findPubspecYaml(searchDir)
+	pubspecPath, err := codegen.FindPubspecYaml(searchDir)
 	if err != nil {
 		logging.V(5).Infof("GetRequiredPackages: no pubspec found from %s: %v", searchDir, err)
 		return &pulumirpc.GetRequiredPackagesResponse{}, nil
 	}
 
-	pubspec, err := ReadAndParsePubspec(pubspecPath)
+	pubspec, err := codegen.ReadAndParsePubspec(pubspecPath)
 	if err != nil {
 		return nil, err
 	}
@@ -760,7 +808,7 @@ func (host *dartLanguageHost) GetRequiredPackages(
 		projectPackages = nil
 	}
 
-	pulumiPackages := DeterminePulumiPackages(pubspec.Dependencies)
+	pulumiPackages := codegen.DeterminePulumiPackages(pubspec.Dependencies)
 	packages := make([]*pulumirpc.PackageDependency, 0, len(pulumiPackages)+len(projectPackages))
 	seen := map[string]struct{}{}
 	for _, pkg := range pulumiPackages {
@@ -977,7 +1025,7 @@ func (host *dartLanguageHost) DeterminePossiblePulumiPackages(
 	}
 
 	// Use pubspec dependency declarations as the deterministic plugin discovery source.
-	pubspecPath, err := findPubspecYaml(searchDir)
+	pubspecPath, err := codegen.FindPubspecYaml(searchDir)
 	if err != nil {
 		return nil, fmt.Errorf("failed to find pubspec.yaml: %v", err)
 	}
@@ -985,7 +1033,7 @@ func (host *dartLanguageHost) DeterminePossiblePulumiPackages(
 	logging.V(5).Infof("Found pubspec.yaml at: %s", pubspecPath)
 
 	// Read and parse the pubspec.yaml file
-	pubspec, err := ReadAndParsePubspec(pubspecPath)
+	pubspec, err := codegen.ReadAndParsePubspec(pubspecPath)
 	if err != nil {
 		logging.V(7).Infof("failed to find pubspec.yaml: %v", err)
 		return nil, err
@@ -998,7 +1046,7 @@ func (host *dartLanguageHost) DeterminePossiblePulumiPackages(
 	}
 
 	// Determine Pulumi packages
-	packages := DeterminePulumiPackages(pubspec.Dependencies)
+	packages := codegen.DeterminePulumiPackages(pubspec.Dependencies)
 
 	if len(packages) == 0 {
 		return nil, fmt.Errorf("pubspec.yaml at %s does not reference any 'pulumi*' packages. Dependencies: %v", pubspecPath, pubspec.Dependencies)
@@ -1339,6 +1387,8 @@ func (host *dartLanguageHost) emitStartDebuggingWithConfig(
 
 var vmServiceURIRegex = regexp.MustCompile(`(?:https?|ws)://[^\s]+`)
 
+// parseVMServiceURIFromLine extracts the first VM service/devtools URI from a
+// runtime output line when present.
 func parseVMServiceURIFromLine(line string) string {
 	line = strings.TrimSpace(line)
 	if line == "" {
@@ -1355,6 +1405,8 @@ func parseVMServiceURIFromLine(line string) string {
 	return strings.TrimSpace(uri)
 }
 
+// debugAttachMessageFromVMServiceURI formats the Pulumi wait message suffix for
+// debugger attach UX.
 func debugAttachMessageFromVMServiceURI(vmServiceURI string) string {
 	u, err := url.Parse(strings.TrimSpace(vmServiceURI))
 	if err != nil || u == nil || u.Host == "" {
@@ -1363,6 +1415,7 @@ func debugAttachMessageFromVMServiceURI(vmServiceURI string) string {
 	return fmt.Sprintf("on vm service %s", u.Host)
 }
 
+// vmServicePortFromURI extracts the VM service port from a parsed URI string.
 func vmServicePortFromURI(vmServiceURI string) string {
 	u, err := url.Parse(strings.TrimSpace(vmServiceURI))
 	if err != nil || u == nil {
@@ -1371,6 +1424,11 @@ func vmServicePortFromURI(vmServiceURI string) string {
 	return strings.TrimSpace(u.Port())
 }
 
+// vmServiceEndpointFromURI extracts host:port from a VM service URI.
+//
+// Example:
+//
+//	ws://127.0.0.1:44651/abc= -> 127.0.0.1:44651
 func vmServiceEndpointFromURI(vmServiceURI string) string {
 	u, err := url.Parse(strings.TrimSpace(vmServiceURI))
 	if err != nil || u == nil {
@@ -1387,6 +1445,13 @@ type vmServiceURIWatcher struct {
 	pending string
 }
 
+// rewriteDebuggerOutputLine rewrites verbose Dart runtime debugger lines into
+// concise CLI-friendly forms.
+//
+// Examples:
+//   - "The Dart VM service is listening on ..." -> "vm service: <host:port>"
+//   - "The Dart DevTools debugger and profiler is available at: ..."
+//     -> "devtools profiler: <host:port>"
 func rewriteDebuggerOutputLine(line string) string {
 	trimmed := strings.TrimSpace(line)
 	switch {
@@ -1439,6 +1504,8 @@ func (w *vmServiceURIWatcher) Write(p []byte) (int, error) {
 	return n, nil
 }
 
+// runResponseForProcessError converts process failures into a Pulumi RunResponse
+// with user-facing diagnostics.
 func runResponseForProcessError(err error) *pulumirpc.RunResponse {
 	if exiterr, ok := err.(*exec.ExitError); ok {
 		if status, stok := exiterr.Sys().(syscall.WaitStatus); stok {
@@ -1778,7 +1845,7 @@ func (host *dartLanguageHost) Template(
 	}
 
 	pubspecPath := filepath.Join(programDir, "pubspec.yaml")
-	pubspec, err := ReadAndParsePubspec(pubspecPath)
+	pubspec, err := codegen.ReadAndParsePubspec(pubspecPath)
 	if err != nil || pubspec == nil {
 		return &pulumirpc.TemplateResponse{}, nil
 	}
@@ -1787,8 +1854,8 @@ func (host *dartLanguageHost) Template(
 	}
 
 	currentPulumiDep, hasPulumiDependency := pubspec.Dependencies["pulumi"]
-	if hasPulumiDependency && !shouldRewriteTemplatePulumiDependency(currentPulumiDep) {
-		if isSourceDependencySpec(currentPulumiDep) {
+	if hasPulumiDependency && !codegen.ShouldRewriteTemplatePulumiDependency(currentPulumiDep) {
+		if codegen.IsSourceDependencySpec(currentPulumiDep) {
 			if pubspec.DependencyOverrides == nil {
 				pubspec.DependencyOverrides = map[string]interface{}{}
 			}
@@ -1804,9 +1871,9 @@ func (host *dartLanguageHost) Template(
 		return &pulumirpc.TemplateResponse{}, nil
 	}
 
-	pulumiSpec := defaultPulumiPubspecDependency()
+	pulumiSpec := codegen.DefaultPulumiPubspecDependency()
 	pubspec.Dependencies["pulumi"] = pulumiSpec
-	if isSourceDependencySpec(pulumiSpec) {
+	if codegen.IsSourceDependencySpec(pulumiSpec) {
 		if pubspec.DependencyOverrides == nil {
 			pubspec.DependencyOverrides = map[string]interface{}{}
 		}
@@ -1817,15 +1884,15 @@ func (host *dartLanguageHost) Template(
 	// pulumi_* packages referenced by the template if those package directories are
 	// present in the same repository. This prevents transitive version constraint
 	// conflicts before packages are published to pub.dev.
-	if pulumiPath, ok := dependencySpecPath(pulumiSpec); ok {
+	if pulumiPath, ok := codegen.DependencySpecPath(pulumiSpec); ok {
 		if filepath.IsAbs(pulumiPath) {
 			repoRoot := filepath.Dir(pulumiPath)
 			for depName, depSpec := range pubspec.Dependencies {
-				moduleDir := dependencyPackageDirFromDartPackageName(depName)
+				moduleDir := codegen.DependencyPackageDirFromDartPackageName(depName)
 				if moduleDir == "" {
 					continue
 				}
-				if existingPath, hasPath := dependencySpecPath(depSpec); hasPath {
+				if existingPath, hasPath := codegen.DependencySpecPath(depSpec); hasPath {
 					if filepath.IsAbs(existingPath) || strings.HasPrefix(existingPath, ".") {
 						continue
 					}
@@ -2027,7 +2094,7 @@ func (host *dartLanguageHost) RunPlugin(
 	}
 
 	runTarget := ""
-	if pubspec, err := ReadAndParsePubspec(filepath.Join(cmdDir, "pubspec.yaml")); err == nil {
+	if pubspec, err := codegen.ReadAndParsePubspec(filepath.Join(cmdDir, "pubspec.yaml")); err == nil {
 		runTarget = strings.TrimSpace(pubspec.Name)
 	}
 
@@ -2196,9 +2263,9 @@ func (host *dartLanguageHost) Pack(ctx context.Context, req *pulumirpc.PackReque
 		return nil, fmt.Errorf("failed to create destination directory: %w", err)
 	}
 
-	packageName := sanitizeDartIdentifier(filepath.Base(packageDir))
-	if pubspec, err := ReadAndParsePubspec(filepath.Join(packageDir, "pubspec.yaml")); err == nil && pubspec != nil && pubspec.Name != "" {
-		packageName = sanitizeDartIdentifier(pubspec.Name)
+	packageName := codegen.SanitizeDartIdentifier(filepath.Base(packageDir))
+	if pubspec, err := codegen.ReadAndParsePubspec(filepath.Join(packageDir, "pubspec.yaml")); err == nil && pubspec != nil && pubspec.Name != "" {
+		packageName = codegen.SanitizeDartIdentifier(pubspec.Name)
 	}
 
 	artifactPath := filepath.Join(destinationDir, packageName+".tar.gz")
@@ -2273,7 +2340,7 @@ func (host *dartLanguageHost) Link(
 	}
 
 	pubspecPath := filepath.Join(info.GetProgramDirectory(), "pubspec.yaml")
-	pubspec, err := ReadAndParsePubspec(pubspecPath)
+	pubspec, err := codegen.ReadAndParsePubspec(pubspecPath)
 	if err != nil {
 		return nil, fmt.Errorf("failed to read project pubspec.yaml: %w", err)
 	}
@@ -2283,12 +2350,12 @@ func (host *dartLanguageHost) Link(
 
 	var importLines []string
 	for _, dep := range req.GetPackages() {
-		dependencyName := dependencyPackageName(info.GetRootDirectory(), dep.GetPath(), dep.GetPackage().GetName())
+		dependencyName := codegen.DependencyPackageName(info.GetRootDirectory(), dep.GetPath(), dep.GetPackage().GetName())
 		pubspec.Dependencies[dependencyName] = map[string]string{
 			"path": filepath.ToSlash(dep.GetPath()),
 		}
 
-		alias := sanitizeDartIdentifier(dep.GetPackage().GetName())
+		alias := codegen.SanitizeDartIdentifier(dep.GetPackage().GetName())
 		importLines = append(importLines, fmt.Sprintf(
 			"  import 'package:%s/%s.dart' as %s;",
 			dependencyName,

@@ -29,14 +29,14 @@ class SampleConfig {
 
   WidgetMetadata? get metadata {
     final raw = _raw('metadata');
-    return raw == null ? null : WidgetMetadata.fromMap((jsonDecode(raw) as Map).cast<String, dynamic>());
+    return (() { final guardedValue = raw; if (guardedValue == null) return null; return WidgetMetadata.fromMap((jsonDecode(guardedValue) as Map).cast<String, dynamic>()); })();
   }
 
   bool get metadataIsSecret => _isSecret('metadata');
 
   WidgetMode? get mode {
     final raw = _raw('mode');
-    return raw == null ? null : WidgetMode.fromValue(raw as String);
+    return (() { final guardedValue = raw; if (guardedValue == null) return null; return WidgetMode.fromValue(guardedValue as String); })();
   }
 
   WidgetMode requireMode() {
@@ -77,8 +77,6 @@ final config = SampleConfig();
 
 
 // FILE: index.dart
-library module_index;
-
 export 'index/functions.dart';
 export 'index/get_widget_details_args.dart';
 export 'index/get_widget_details_result.dart';
@@ -161,7 +159,7 @@ class GetWidgetDetailsResult {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'metadata': metadata.toMap(),
-      'mode': mode.value,
+      'mode': mode.wireValue,
     };
   }
 
@@ -197,8 +195,8 @@ class Widget extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    this.arn = registerOutput<String>('arn');
-    this.mode = registerOutput<WidgetMode>('mode');
+    arn = registerOutput<String>('arn');
+    mode = registerOutput<WidgetMode>('mode');
   }
 }
 
@@ -228,13 +226,13 @@ class WidgetArgs {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'metadata': ?pulumi.Input.mapOptionalInputValue<WidgetMetadata, Map<String, dynamic>>(metadata, (value) => value.toMap()),
-      'mode': pulumi.Input.mapInputValue<WidgetMode, String>(mode, (value) => value.value),
+      'mode': pulumi.Input.mapInputValue<WidgetMode, String>(mode, (value) => value.wireValue),
     };
   }
 
   factory WidgetArgs.fromMap(Map<String, dynamic> map) {
     return WidgetArgs(
-      metadata: map['metadata'] == null ? null : pulumi.Input.fromValue(WidgetMetadata.fromMap((map['metadata']! as Map).cast<String, dynamic>())),
+      metadata: (() { final guardedValue = map['metadata']; if (guardedValue == null) return null; return pulumi.Input.fromValue(WidgetMetadata.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       mode: pulumi.Input.fromValue(WidgetMode.fromValue(map['mode']! as String)),
     );
   }
@@ -261,7 +259,7 @@ class WidgetMetadata {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'mode': pulumi.Input.mapInputValue<WidgetMode, String>(mode, (value) => value.value),
+      'mode': pulumi.Input.mapInputValue<WidgetMode, String>(mode, (value) => value.wireValue),
       'owner': owner,
     };
   }
@@ -280,12 +278,12 @@ enum WidgetMode {
   readOnly("read-only"),
   readWrite("read-write");
 
-  const WidgetMode(this.value);
-  final String value;
+  const WidgetMode(this.wireValue);
+  final String wireValue;
 
   static WidgetMode fromValue(String value) {
     for (final item in WidgetMode.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
@@ -295,8 +293,6 @@ enum WidgetMode {
 
 
 // FILE: providers.dart
-library module_providers;
-
 export 'providers/provider_provider.dart';
 
 // FILE: providers/provider_provider.dart

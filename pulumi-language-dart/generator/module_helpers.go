@@ -7,6 +7,14 @@ import (
 	"strings"
 )
 
+// ModuleExportPathsFromContent extracts `export '...';` paths from a Dart file.
+//
+// Example:
+//
+//	export 'a.dart';
+//	export 'b.dart';
+//
+// becomes []string{"a.dart", "b.dart"}.
 func ModuleExportPathsFromContent(content []byte) []string {
 	lines := strings.Split(string(content), "\n")
 	exports := make([]string, 0, len(lines))
@@ -24,6 +32,12 @@ func ModuleExportPathsFromContent(content []byte) []string {
 	return exports
 }
 
+// RelativeImportPath returns a normalized slash-separated relative path from
+// fromFile's directory to toFile, falling back to toFile when Rel fails.
+//
+// Example:
+//
+//	from: "ec2.dart", to: "ec2/instance.dart" => "ec2/instance.dart"
 func RelativeImportPath(fromFile, toFile string) string {
 	fromDir := filepath.Dir(filepath.ToSlash(fromFile))
 	rel, err := filepath.Rel(fromDir, filepath.ToSlash(toFile))
@@ -33,6 +47,13 @@ func RelativeImportPath(fromFile, toFile string) string {
 	return filepath.ToSlash(rel)
 }
 
+// GeneratedPublicModuleEntryPoints emits package-level forwarding entrypoints
+// (for example, "ec2.dart") that export "package:<pkg>/src/<module>.dart".
+// Internal and config modules are intentionally excluded.
+//
+// Example entrypoint body:
+//
+//	export 'package:pulumi_aws/src/ec2.dart';
 func GeneratedPublicModuleEntryPoints(packageName string, sdkSources map[string][]byte) map[string][]byte {
 	rootModules := map[string]struct{}{}
 	for relativePath := range sdkSources {
